@@ -3,41 +3,35 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    [SerializeField] private Transform[] patrolPoints;
+    [Header("Patrol Settings")]
+    [SerializeField] private float minPatrolDistance = 2f;
+    [SerializeField] private float maxPatrolDistance = 10f;
 
-    private int currentIndex;
+    private EnemyPathfinding pathfinding;
 
-    public bool HasPatrolPoints =>
-        patrolPoints != null &&
-        patrolPoints.Length > 0 &&
-        patrolPoints[currentIndex] != null;
+    public Vector2 CurrentDestination { get; private set; }
 
-    public Vector2 CurrentDestination
+    public bool HasDestination { get; private set; }
+
+    private void Awake()
     {
-        get
-        {
-            if (!HasPatrolPoints)
-                return transform.position;
-
-            return patrolPoints[currentIndex].position;
-        }
+        pathfinding = GetComponent<EnemyPathfinding>();
     }
 
-    public void UpdateDestination()
+    public bool ChooseNewDestination()
     {
-        if (patrolPoints == null || patrolPoints.Length == 0)
-            return;
+        HasDestination = pathfinding.TryGetRandomWalkablePoint(
+            transform.position,
+            minPatrolDistance,
+            maxPatrolDistance,
+            out Vector2 destination
+        );
 
-        currentIndex = (currentIndex + 1) % patrolPoints.Length;
-
-        // Skip missing patrol points
-        int attempts = 0;
-
-        while (patrolPoints[currentIndex] == null &&
-               attempts < patrolPoints.Length)
+        if (HasDestination)
         {
-            currentIndex = (currentIndex + 1) % patrolPoints.Length;
-            attempts++;
+            CurrentDestination = destination;
         }
+
+        return HasDestination;
     }
 }

@@ -13,7 +13,7 @@ public class AttackState : EnemyState
     {
         Debug.Log("Entering Attack");
 
-        stateMachine.Movement.Stop();
+        stateMachine.Pathfinding.StopFollowing();
 
         // Allow the first attack immediately
         nextAttackTime = 0f;

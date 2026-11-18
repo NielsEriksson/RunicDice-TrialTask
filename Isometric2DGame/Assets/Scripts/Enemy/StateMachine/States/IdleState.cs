@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class IdleState : EnemyState
 {
-    private float idleDuration = 3f;
+    private const float IdleDuration = 3f;
     private float idleTimer;
 
     public IdleState(EnemyStateMachine stateMachine)
@@ -15,23 +15,22 @@ public class IdleState : EnemyState
 
         idleTimer = 0f;
 
-        stateMachine.Movement.Stop();
+        stateMachine.Pathfinding.StopFollowing();
     }
 
     public override void Update()
     {
-        // Check if player is detected
+        // Check if player is visible
         if (stateMachine.Detection.CanSeePlayer)
         {
             stateMachine.ChangeState(stateMachine.ChaseState);
             return;
         }
 
-        // Wait for idle duration
+        // Wait before starting patrol
         idleTimer += Time.deltaTime;
 
-        if (idleTimer >= idleDuration &&
-            stateMachine.Patrol.HasPatrolPoints)
+        if (idleTimer >= IdleDuration)
         {
             stateMachine.ChangeState(stateMachine.PatrolState);
         }

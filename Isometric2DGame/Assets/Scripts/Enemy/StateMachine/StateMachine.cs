@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyStateMachine : MonoBehaviour
 {
     public EnemyState CurrentState { get; private set; }
-
+    public EnemyPathfinding Pathfinding { get; private set; }
     // States
     public IdleState IdleState { get; private set; }
     public PatrolState PatrolState { get; private set; }
@@ -27,7 +27,7 @@ public class EnemyStateMachine : MonoBehaviour
         Movement = GetComponent<EnemyMovement>();
         Detection = GetComponent<EnemyDetection>();
         Patrol = GetComponent<EnemyPatrol>();
-
+        Pathfinding = GetComponent<EnemyPathfinding>();
         // Initialize states
         IdleState = new IdleState(this);
         PatrolState = new PatrolState(this);

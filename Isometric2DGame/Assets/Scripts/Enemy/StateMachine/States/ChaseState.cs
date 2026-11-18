@@ -11,22 +11,19 @@ public class ChaseState : EnemyState
 
     public override void Update()
     {
-        // Transition to attack
         if (stateMachine.Detection.IsPlayerInAttackRange)
         {
             stateMachine.ChangeState(stateMachine.AttackState);
             return;
         }
 
-        // Transition to patrol
         if (!stateMachine.Detection.CanSeePlayer)
         {
-            stateMachine.ChangeState(stateMachine.IdleState);
+            stateMachine.ChangeState(stateMachine.PatrolState);
             return;
         }
 
-        // Chase player
-        stateMachine.Movement.MoveTowards(
+        stateMachine.Pathfinding.SetDestination(
             stateMachine.Detection.Player.position,
             stateMachine.Movement.chaseSpeed
         );
