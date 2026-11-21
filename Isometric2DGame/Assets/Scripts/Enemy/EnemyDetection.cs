@@ -4,7 +4,6 @@ using UnityEngine;
 public class EnemyDetection : MonoBehaviour
 {
     [Header("Detection")]
-    [SerializeField] private float detectionRange = 8f;
     [SerializeField] private float attackRange = 2f;
 
     [Header("Line Of Sight")]
