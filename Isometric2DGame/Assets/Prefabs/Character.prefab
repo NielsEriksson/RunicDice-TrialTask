@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &183529922855167245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1948050952714556262}
+  m_Layer: 6
+  m_Name: ArrowOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1948050952714556262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183529922855167245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.336, y: 0.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1715476159022993133}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3562531269497281614
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,6 +48,7 @@ GameObject:
   - component: {fileID: 2930592608105417010}
   - component: {fileID: 1044861396047686633}
   - component: {fileID: 6155047236475306395}
+  - component: {fileID: 6760510266621595137}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -38,6 +70,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2022378860048356393}
+  - {fileID: 1948050952714556262}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8307429906181632119
@@ -266,6 +299,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPickUp
   interactAction: {fileID: -5285718713898260183, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   pickupText: {fileID: 8499296486679747297}
+--- !u!114 &6760510266621595137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3562531269497281614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abc21d77b71fa014c831ca5233e39a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShoot
+  arrowPrefab: {fileID: 1956889809324407163, guid: 0741d8081e195e84c85d2c9bbc331272, type: 3}
+  shootCooldown: 0.5
+  shotOrigin: {fileID: 1948050952714556262}
+  shootAction: {fileID: 7776567575317350035, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
+  pointerPositionAction: {fileID: 2814767697163855112, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
 --- !u!1 &3974772446699283465
 GameObject:
   m_ObjectHideFlags: 0

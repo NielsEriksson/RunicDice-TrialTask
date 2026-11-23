@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class AttackState : EnemyState
 {
-    private float attackCooldown = 1.5f;
     private float nextAttackTime;
 
     public AttackState(EnemyStateMachine stateMachine)
@@ -31,11 +30,9 @@ public class AttackState : EnemyState
         // Check attack cooldown
         if (Time.time >= nextAttackTime)
         {
-            Debug.Log("Attack");
-
-            stateMachine.Animator.SetTrigger("Attack");
-
-            nextAttackTime = Time.time + attackCooldown;
+           Debug.Log("attacking");
+           stateMachine.Attack.Attack();
+           nextAttackTime = Time.time + stateMachine.Attack.attackCooldown;
         }
     }
 

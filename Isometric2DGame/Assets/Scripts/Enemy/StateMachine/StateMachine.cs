@@ -18,6 +18,7 @@ public class EnemyStateMachine : MonoBehaviour
     public EnemyMovement Movement { get; private set; }
     public EnemyDetection Detection { get; private set; }
     public EnemyPatrol Patrol { get; private set; }
+    public EnemyAttack Attack { get; private set; }
 
     public Animator Animator { get; private set; }
 
@@ -25,8 +26,9 @@ public class EnemyStateMachine : MonoBehaviour
     {
         Animator = GetComponent<Animator>();
         Movement = GetComponent<EnemyMovement>();
-        Detection = GetComponent<EnemyDetection>();
+        Detection = GetComponentInChildren<EnemyDetection>();
         Patrol = GetComponent<EnemyPatrol>();
+        Attack = GetComponent<EnemyAttack>();
         Pathfinding = GetComponent<EnemyPathfinding>();
         // Initialize states
         IdleState = new IdleState(this);

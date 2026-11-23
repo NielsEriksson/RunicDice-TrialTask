@@ -59,10 +59,34 @@ public class EnemyPathfinding : MonoBehaviour
         }
     }
 
+
     private void Awake()
     {
         movement = GetComponent<EnemyMovement>();
+
+        // Find the Walkable Tilemap
+        GameObject walkableObject = GameObject.FindGameObjectWithTag("Walkable");
+
+        if (walkableObject != null)
+        {
+            walkableTilemap = walkableObject.GetComponent<Tilemap>();
+        }
+        else
+        {
+            Debug.LogError("No GameObject with the 'Walkable' tag found!");
+        }
+
+        // Find all Obstacles Tilemaps
+        GameObject[] obstacleObjects = GameObject.FindGameObjectsWithTag("Obstacles");
+
+        blockedTilemaps = new Tilemap[obstacleObjects.Length];
+
+        for (int i = 0; i < obstacleObjects.Length; i++)
+        {
+            blockedTilemaps[i] = obstacleObjects[i].GetComponent<Tilemap>();
+        }
     }
+
 
     private void Update()
     {

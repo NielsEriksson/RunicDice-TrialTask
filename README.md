@@ -26,7 +26,7 @@ A 2D isometric game developed in Unity as part of the RDE Programming Trial. The
 - Player detection and state transitions.
 
 ### 3. Combat System
-- Player melee or projectile attacks.
+- Player projectile attacks.
 - Player and enemy health systems.
 - Enemy attacks and health UI.
 
@@ -34,12 +34,8 @@ A 2D isometric game developed in Unity as part of the RDE Programming Trial. The
 - Collectible items.
 - Item pickup using E.
 - Inventory UI toggled using I.
-- Item usage, such as healing and equipment.
+- Item usage, such as healing (using the apple will heal you, where as using the bomb will make it blow up in your hands if youre not careful).
 
-### 5. Dialogue System
-- NPC interaction using E.
-- Dialogue UI and branching choices.
-- Custom Unity Editor tool for creating dialogue sequences.
 
 ## Controls
 
@@ -48,7 +44,7 @@ A 2D isometric game developed in Unity as part of the RDE Programming Trial. The
 | WASD / Arrow Keys | Move |
 | E | Interact / Pick up items |
 | I | Toggle inventory |
-| Space / Mouse Click | Attack |
+| Mouse Click | Attack |
 
 ## Project Structure
 
@@ -56,17 +52,15 @@ A 2D isometric game developed in Unity as part of the RDE Programming Trial. The
 Assets/
 ├── Animations/
 ├── Art/
-├── Audio/
-├── Materials/
+├── Miscellaneous/
 ├── Prefabs/
 ├── Scenes/
+├── ScriptableObjects/
 ├── Scripts/
-│   ├── Player/
+│   ├── Camera/
 │   ├── Enemy/
-│   ├── Combat/
 │   ├── Inventory/
-│   ├── Dialogue/
-│   └── UI/
+│   ├── Player/
 └── Settings/
 ```
 
@@ -77,6 +71,7 @@ Third-party assets will be credited here where required by their respective lice
 ## AI Usage
 
 AI may be used for research, brainstorming, and troubleshooting. All generated suggestions will be reviewed and verified during development.
+AI was used to generate the UI components (Inventory and Healthbar)
 
 ## Author
 
